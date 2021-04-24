@@ -1,0 +1,500 @@
+du -sh *
+cd pack/
+ll
+cd ..
+ll
+cd ..
+ll
+cd ..
+ll
+ll -a
+rm -rf .git*
+ll
+cd animalNet/
+ll
+cd ..
+ll
+cp -R animalNet/ ~/Downloads/DAAN-570-302-scratch/
+cp -R animalNet ~/Downloads/DAAN-570-302-scratch/
+ll
+cd ..
+ll
+pwd
+cd homework/
+ll
+cd assignment_03/
+ll
+history
+pwd
+pwd
+ll
+ll -a
+rm -rf .i*
+ll
+ll -a
+pwd
+cd .
+ll
+cd ..
+cd ..
+ll
+cd ..
+ll
+find . | grep git
+find . | grep init
+cd git.repo/
+cd phdSideQuests/
+ll
+ll -a
+ll
+pbpaste 
+pbpaste | cut -f 3
+pbpaste | cut -d' ' -f 3
+pbpaste | cut -d' ' -f 2
+pbpaste | cut -d' ' -f 4-
+pbpaste | cut -d' ' -f 5-
+pbpaste | cut -d' ' -f 5- | pbcopy 
+history | grep cut
+pbpaste | cut -d' ' -f 4,6- | pbcopy 
+pbpaste | cut -d' ' -f 5- | pbcopy 
+pbpaste | cut -d' ' -f 4,6- | pbcopy 
+pbpaste | cut -d' ' -f 4,6- | pbcopy 
+pbpaste | cut -d' ' -f 4,6- | pbcopy 
+for i in {1..100}; do echo "Never Forget the White Cursor Box"; done
+for i in {1..100}; do echo 'Never Forget the White Cursor Box'; done
+for i in {1..100}; do echo 'Never Forget the White Cursor Box!'; done
+for i in {1..100}; do echo 'Never Forget the White Cursor Box!!!!'; done
+for i in {1..100}; do echo '$i - Never Forget the White Cursor Box!!!!'; done
+for i in {1..100}; do echo $i 'Never Forget the White Cursor Box!!!!'; done
+for i in {1..100}; do echo $i ' - Never Forget the White Cursor Box!!!!'; done
+for i in {1..100}; do echo $i '- Never Forget the White Cursor Box!!!!'; done
+for i in {1..100}; do echo $i '- Never Forget the White Cursor Box!!!!'; done
+for i in {1..100}; do echo $i '- Never Forget the White Cursor Box!!!!'; done 
+ll
+history
+pip show unrar
+cd Downloads/
+patool extract Yoga-82.rar 
+man patool
+ll
+history
+cd /Library/Frameworks/Python.framework/Versions/3.8/bin
+ll
+pip install rarfile
+patool extract Yoga-82.rar 
+cd ~/Downloads/
+patool extract Yoga-82.rar 
+ll
+cd -
+ll
+cd patool 
+vi patool 
+pip 
+pip uninstall unrar
+pip install unrar
+cd
+cd Downloads/
+patool extract Yoga-82.rar 
+ cd /Library/Frameworks/Python.framework/Versions/3.8/bin
+ll
+cd patool 
+vi patool 
+cd -
+patool extract Yoga-82.rar 
+pip install 7z
+pip install rar
+cd -
+vi patool 
+cd -
+patool extract Yoga-82.rar 
+cd -
+vi patool 
+ll
+vi patool 
+vi patool 
+man patool
+patool formats
+vi patool 
+patool formats
+pip install rar
+pip install 7za
+pip install 7zr
+pip uninstall pyunpack
+pip install pyunpack
+patool formats
+patool formats | grep rar
+pip install rarfile
+pip unistall rarfile
+pip uninstall rarfile
+pip uninstall unrar
+pip install unrar
+ll
+mv ~/Downloads/unrar_MacOSX_10.13.2_64bit unrar
+ll
+chmod 775 unrar 
+ll
+cp unrar luke
+ll
+chmod -@ luke 
+xattr -c unrar 
+ll
+rm -f luke 
+pwd
+history | grep tar
+ll
+mv unrar luke
+ll
+cp ~/Downloads/unrar_MacOSX_10.13.2_64bit unrar
+ll
+chmod 755 unrar 
+ll
+rm -f unrar 
+cp ~/Downloads/"unrar_MacOSX_10.13.2_64bit (1)" unrar
+ll
+chmod 755 unrar 
+ll
+luke -h
+.luke --help
+.luke
+luke
+history | grep cut
+pbpaste | cut -d'>' -f 3-
+pbpaste | cut -d'>' -f 1-
+pbpaste | cut -d'>' -f 2-
+pbpaste | cut -d' ' -f 2-
+pbpaste | cut -d'>' -f 2-
+pbpaste | cut -d'>' -f 2- | pbcopy 
+pbpaste 
+pbpaste | tr '\n' ', '
+pbpaste | tr '\n' ', ' | pbcopy 
+killall finder
+killall Finder
+history
+clear
+history
+history
+ll
+cd Downloads/
+cd DAAN-570-302-scratch/
+ll
+cd psu-daan-570-group-1/
+ll
+ll
+git add -A
+git status
+git commit -a -m 'integrated example codes into single file; included refs to both datasets'
+git push
+git mv models.beta/xception_weights_tf_dim_ordering_tf_kernels_notop.h5 models.tmp/
+ll
+git status
+git commit -a -m 'integrated example codes into single file; included refs to both datasets'
+git push
+git pull
+cd ..
+ll
+cd psu-daan-570-group-1/
+ll
+ll -a
+vi .gitignore 
+git pull
+ll
+git status
+ll
+cd models.
+cd models.tmp/
+ll
+touch test.h5
+git add -A
+git status
+cd ..
+ll
+cd models.tmp/
+rm -f *
+ll
+cd ..
+vi .gitignore 
+cd models.tmp/
+ll
+ll
+vi README.md
+git add -A
+git commit -a -m 'add tmp dir for models'
+git push
+git pull
+ll
+cd ..
+ll
+cd images/
+ll
+cd Project/
+l
+ll
+cd DATASET/
+ll
+l
+history | grep exif
+history | grep find
+ll
+find . -type f -exec exiftool -- {} +
+ll
+history | grep exif
+find . -type f -exec exiftool -all= --jfif:all -- {} +
+find . -type f -exec exiftool -all= --jfif:all -- {} +
+ll
+cd TEST
+ll
+cd downdog/
+ll
+find . -type f -name '*_original' -- {} +
+find . -type f -name '*_original'
+find . -type f -name '*_original' -exec rm -f -- {} +
+ll
+cd ..
+ll
+history
+find . -type f -name '*_original' -exec rm -f -- {} +
+find . -type f -name '*_original'
+find . -type f -name '*_original'
+ll
+find . -type f -exec exiftool -validate -- {} +
+ll
+history
+cd ..
+ll
+cd ..
+cd ..
+cd ..
+cd ..
+git clone https://github.com/m31uk3/psu-ie-575-team-4.git
+ll
+cp psu-daan-570-group-1/.gitignore psu-ie-575-team-4/
+cd psu-ie-575-team-4/
+cp ~/Downloads/spotify-song-prediction-and-recommendation-system.ipynb 
+cp ~/Downloads/spotify-song-prediction-and-recommendation-system.ipynb .
+ll
+ll ../psu-daan-570-group-1/
+ls -1 ../psu-daan-570-group-1/ 
+mkdir models.beta
+models.stable
+models.tmp
+mkdir models.stable
+mkdir models.tmp
+ll
+mkdir plots
+ll
+mkdir data
+ll
+ll
+vi .gitignore 
+ll
+git add -A
+git status
+for i in (ls *mod*); echo i;
+history | grep for
+for i in {ls *mod*}; do echo i; done
+for i in {ls *mod*}; do echo $i; done
+for i in ls *mod*; do echo $i; done
+for i in (*mod*); do echo $i; done
+for i in {*mod*}; do echo $i; done
+for i in ls *mod*; do echo $i; done
+for i in *mod*; do echo $i; done
+for i in *mod*; do echo $i; done
+history
+find . -type f -name *model*
+find . -name *model* -type f *model*
+find . -name model* -type f *model*
+find . -name "*model*" -type f *model*
+find . -name "*model*" -type f
+find . -name "model*" -type f
+ll
+find . -name "models*" -type f
+find . -name "models*" -type d
+find . -name "models*" -type d -exec touch README.md -- {} +
+ll
+find .
+ll -r
+ll -R
+ll
+rm -f --
+ll
+rm -f "--"
+ll
+ll
+ll
+history | grep exec
+find . -name "models*" -type d -exec touch README.md {} +
+ll
+cd models.tmp/
+ll
+cd ..
+ll
+vi README.md 
+for i in ls *mod*; do echo $i; done
+for i in *mod*; do echo $i; done
+for i in *mod*; do touch $i/README.md; done
+ll -R
+ll
+cd models.tmp/
+ll
+cat *
+cp ../../psu-daan-570-group-1/models.tmp/README.md .
+ll
+cat README.md 
+:q
+ll
+cd ..
+ll
+git add -A
+git status
+git commit -a -m 'first commit! :)'
+git push
+ll
+vi README.md 
+git add -A
+git commit -a -m 'first commit! :)'
+git push
+git pull
+git log
+ll
+cp ~/Downloads/hurricane-strength-3-ensemble-methods.Rmd .
+ll
+git add -A
+git commit -a -m 'find more R code examples to learn from'
+git push
+cp ~/Downloads/music-recommendation-system-using-spotify-dataset.ipynb .
+ll
+git add -A
+git commit -a -m 'find more R code examples to learn from'
+git push
+ll
+cd data/
+cp ../../psu-daan-570-group-1/models.tmp/.gitignore .
+vi .gitignore 
+cp .gitignore ../models.tmp/
+git add -A
+git commit -a -m 'add in .gitignores to support clean structure'
+git push
+cd data
+touch README.md
+cp ../models.tmp/README.md .
+vi README.md 
+git add -A
+git commit -a -m 'add in .gitignores to support clean structure'
+git push
+git pul
+git pull
+cd..
+cd ..
+ll
+cd ..
+ll
+cd psu-daan-570-group-1/
+vi .gitignore 
+cd ..
+cd psu-ie-575-team-4/
+ll
+vi .gitignore 
+git add -A
+git status
+cd data/
+ll
+vi .gitignore 
+vi .gitignore 
+git add -A
+git status
+git commit -a -m 'add in .gitignores to support clean structure'
+git push
+git pull
+ll
+cd ..
+ll
+mkdir ll
+ll
+mv ll tab-stash
+ll
+history | grep snap
+vi ~/.bash_profile 
+vi ~/.bash_profile 
+. ~/.bash_profile 
+ll
+cd tab-stash/
+ll
+tab-stash 
+vi ~/.bash_profile 
+. ~/.bash_profile 
+tab-stash 
+ll
+rm -f tab-stash.Sat_Apr_24_2021-04-24_04_24_10.txt 
+ll
+cat tab-stash.Sat_Apr_24_2021-04-24_04_24_35.txt 
+ll
+ll
+pwd
+git add -A
+git status
+git commit -a -m 'add tab-stash'
+git push
+git pull
+git push
+ll
+cd ..
+ll
+mkdir history-snap
+cd history-snap/
+history-snap 
+ll
+vi history-snap.Sat_Apr_24_2021-04-24_04_27_37.txt 
+vi history-snap.Sat_Apr_24_2021-04-24_04_27_37.txt 
+ll
+cd ..
+cd ..
+ll
+cd -
+ll
+git status
+git add -A
+git commit -a -m 'add history-snap'
+git push
+man history
+vi ~/.bash_profile 
+history -5 -w /dev/stdout
+history -w -5 /dev/stdout
+history -w 5 /dev/stdout
+history -w 5 /dev/stdout
+history -w 1 /dev/stdout
+ll
+ll -rt
+rm -f 5 1
+ll
+ll -rt
+history -w -n 5 /dev/stdout
+history -w /dev/stdout | tail -n 4
+history -w /dev/stdout | tail -n 500
+history -w /dev/stdout | tail -n 500 | more
+history -w /dev/stdout | tail -n 500 | more
+history -w /dev/stdout | tail -n 500 | grep exif
+history -w /dev/stdout | tail -n 500 | grep for
+history -w /dev/stdout | tail -n 500 > history-snap/history-snap.Sat_Apr_24_2021-04-24_04_27_37.txt 
+ll
+git add -A
+git status
+history
+git commit -a -m 'add history-snap'
+git push
+ll
+cd ..
+ll
+cd psu-daan-570-group-1/
+ll
+mkdir tab-stash
+cd tab-stash/
+tab-stash 
+ll
+cat tab-stash.Sat_Apr_24_2021-04-24_04_38_46.txt 
+ll
+cd ..
+mkdir history-snap
+cd history-snap/
+history-snap 
+history
+history -w /dev/stdout | tail -n 500 > history-snap.Sat_Apr_24_2021-04-24_04_39_16.txt 

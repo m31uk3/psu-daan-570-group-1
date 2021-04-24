@@ -1,0 +1,131 @@
+(8) WhatsApp
+https://web.whatsapp.com/
+
+Mail - Jackson, Luke - Outlook
+https://outlook.office.com/mail/inbox/id/AAQkAGJhMmFjMDNiLTdiZDMtNDYyYi04MTBmLTM1NWJlMDExNWVhOAAQAMCqaBOEpatIvRTt203%2Bfws%3D
+
+Gmail - Compose Mail
+https://mail.google.com/mail/u/0/h/qf9v6mr6sukd/?&pv=cv&th=1787eec7c7ad477d&cs=b&v=b
+
+Google
+https://www.google.com/
+
+Google Kalender - Woche vom 19. April 2021
+https://calendar.google.com/calendar/u/0/r/week
+
+Danayak, Nidhi, +2 | Microsoft Teams
+https://teams.microsoft.com/_#/conversations/19:db8a30eaf83a4cd59d3c73ceebc4a780@thread.v2?ctx=chat
+
+Assignment # 3
+https://psu.instructure.com/courses/2117816/assignments/12790126
+
+Azure Lab Services
+https://labs.azure.com/virtualmachines
+
+Music Recommendation System using Spotify Dataset | Kaggle
+https://www.kaggle.com/vatsalmavani/music-recommendation-system-using-spotify-dataset
+
+Hurricane strength #3: ensemble methods | Kaggle
+https://www.kaggle.com/junella/hurricane-strength-3-ensemble-methods
+
+Spotify- Song Prediction and Recommendation System | Kaggle
+https://www.kaggle.com/sowmya96/spotify-song-prediction-and-recommendation-system
+
+MPII Human Pose Database
+http://human-pose.mpi-inf.mpg.de/#dataset
+
+Pytorch-Human-Pose-Estimation/README.md at master · Naman-ntc/Pytorch-Human-Pose-Estimation · GitHub
+https://github.com/Naman-ntc/Pytorch-Human-Pose-Estimation/blob/master/README.md
+
+GitHub - amarchenkova/yoga-pose-CNN: Simple image classification convolutional neural net and prediction for 10 different yoga poses
+https://github.com/amarchenkova/yoga-pose-CNN
+
+Building powerful image classification models using very little data
+https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html
+
+Simple Image Classification using Convolutional Neural Network — Deep Learning in python. | by Venkatesh Tata | Becoming Human: Artificial Intelligence Magazine
+https://becominghuman.ai/building-an-image-classifier-using-deep-learning-in-python-totally-from-a-beginners-perspective-be8dbaf22dd8
+
+Convolutional Neural Network for Classifying Yoga Poses - Anastasia Marchenkova
+https://www.amarchenkova.com/2018/03/25/convolutional-neural-network-yoga-poses/
+
+My files - OneDrive
+https://pennstateoffice365-my.sharepoint.com/personal/aos5818_psu_edu/_layouts/15/onedrive.aspx
+
+m31uk3/psu-ie-575-team-4
+https://github.com/m31uk3/psu-ie-575-team-4
+
+Editing Code with Multiple Cursors - WebStorm Guide
+https://www.jetbrains.com/webstorm/guide/tips/multi-cursor/
+
+Feature Spotlight: Multiple Selections in PyCharm | The PyCharm Blog
+https://blog.jetbrains.com/pycharm/2014/09/feature-spotlight-multiple-selections-in-pycharm/#:~:text=Set%20multiple%20cursors%20in%20the,G%20for%20Mac%20OS%20X)
+
+Home Page - Select or create a notebook
+http://localhost:8888/tree
+
+2.1-a-first-look-at-a-neural-network-1.ljackson - Jupyter Notebook
+http://localhost:8888/notebooks/2.1-a-first-look-at-a-neural-network-1.ljackson.ipynb
+
+python - Can I skip files using Keras ImageDataGenerator().flow_from_directory on MacOS? - Stack Overflow
+https://stackoverflow.com/questions/53945160/can-i-skip-files-using-keras-imagedatagenerator-flow-from-directory-on-macos
+
+Search results - Google Drive
+https://drive.google.com/drive/search?q=DS_Store
+
+How to colorize black & white photos with just 100 lines of neural network code | by Emil Wallner | Medium
+https://emilwallner.medium.com/colorize-b-w-photos-with-a-100-line-neural-network-53d9b4449f8d
+
+filter "hidden files" ImageDataGenerator - Google Search
+https://www.google.com/search?q=filter+%22hidden+files%22+ImageDataGenerator&sxsrf=ALeKk02uAecuTrmKBAnpvPeqyWPPiOC5Kw%3A1619243578765&ei=OrKDYNS_LZKStAaY4Z9I&oq=filter+%22hidden+files%22+ImageDataGenerator&gs_lcp=Cgdnd3Mtd2l6EAMyBAgjECc6BwgAEEcQsANQz1VY91tgvIQBaAFwAngAgAFJiAGLApIBATSYAQCgAQGqAQdnd3Mtd2l6yAEIwAEB&sclient=gws-wiz&ved=0ahUKEwjUxMOymJbwAhUSCc0KHZjwBwkQ4dUDCA4&uact=5
+
+35 Practical Examples of Linux Find Command
+https://www.tecmint.com/35-practical-examples-of-linux-find-command/
+
+InvalidArgumentError: logits and labels must be broadcastable: logits_size=[64,48] labels_size=[32,48] [[node softmax_cross_entropy_loss/xentropy (defined at <ipython-input-51-b7b564720801>:112) = SoftmaxCrossEntropyWithLogits[T=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"](softmax_cross_entropy_loss/xentropy/Reshape, softmax_cross_entropy_loss/xentropy/Reshape_1)]] · Issue #6036 · tensorflow/models
+https://github.com/tensorflow/models/issues/6036
+
+python - OSError: image file is truncated - Stack Overflow
+https://stackoverflow.com/questions/60584155/oserror-image-file-is-truncated
+
+OSError: image file is truncated (150 bytes not processed) - PyTorch Forums
+https://discuss.pytorch.org/t/oserror-image-file-is-truncated-150-bytes-not-processed/64445
+
+python - Training Tensorflow 2.0 on RGBA PNGs? - Stack Overflow
+https://stackoverflow.com/questions/58756224/training-tensorflow-2-0-on-rgba-pngs
+
+Searching for corrupted images
+https://exiftool.org/forum/index.php?topic=8337.0
+
+machine learning - Regarding Convolution Neural Network - Cross Validated
+https://stats.stackexchange.com/questions/472883/regarding-convolution-neural-network
+
+Image data preprocessing
+https://keras.io/api/preprocessing/image/
+
+git - gitignore directory exception not working - Stack Overflow
+https://stackoverflow.com/questions/16678936/gitignore-directory-exception-not-working
+
+git ignore folder - Google Search
+https://www.google.com/search?q=git+ignore+folder&oq=git+ignore+folder+&aqs=chrome..69i57j69i64.3543j0j7&sourceid=chrome&ie=UTF-8
+
+Git - gitignore Documentation
+https://git-scm.com/docs/gitignore
+
+How can I restore a deleted file in Git? | Learn Version Control with Git
+https://www.git-tower.com/learn/git/faq/restoring-deleted-files/
+
+github - Git error, need to remove large file - Stack Overflow
+https://stackoverflow.com/questions/33360043/git-error-need-to-remove-large-file
+
+Creating and highlighting code blocks - GitHub Docs
+https://docs.github.com/en/github/writing-on-github/creating-and-highlighting-code-blocks
+
+bash - Recursively add a file to all sub-directories - Unix & Linux Stack Exchange
+https://unix.stackexchange.com/questions/94207/recursively-add-a-file-to-all-sub-directories
+
+How do I make the vi editor display or hide line numbers?
+https://kb.iu.edu/d/afcx
+
+bash - How to get last N commands from history? - Unix & Linux Stack Exchange
+https://unix.stackexchange.com/questions/212872/how-to-get-last-n-commands-from-history
