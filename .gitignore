@@ -2,4 +2,4 @@
 .DS_Store
 .idea/
 images/
-models.tmp/
+#models.tmp/
