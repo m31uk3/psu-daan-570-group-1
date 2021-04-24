@@ -14,11 +14,13 @@ from IPython.display import display
 import h5py
 
 # input vars
+epochs = 10
 batch_size = 32
 img_dims = 64
 
 # Data Augmentation
 train_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
+
 test_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
 
 # train_2_data = PreP.image.ImageDataGenerator(rescale=1. / 255,
@@ -34,11 +36,13 @@ classes = 5
 training_set = train_data.flow_from_directory('images/Project/DATASET/TRAIN', # 5 classes
                                               target_size=(img_dims, img_dims),
                                               batch_size=batch_size,
+                                              color_mode='rgba',  # (img_dims, img_dims, 4)
                                               class_mode='categorical')
 
 test_set = test_data.flow_from_directory('images/Project/DATASET/TEST', # 5 classes
                                          target_size=(img_dims, img_dims),
                                          batch_size=batch_size,
+                                         color_mode='rgba',  # (img_dims, img_dims, 4)
                                          class_mode='categorical')
 
 #classes = 10
@@ -54,7 +58,7 @@ test_set = test_data.flow_from_directory('images/Project/DATASET/TEST', # 5 clas
 
 # CNN model 
 model = Modl.Sequential()
-model.add(Layr.Conv2D(32, (3, 3), input_shape=(img_dims, img_dims, 3), activation='relu'))
+model.add(Layr.Conv2D(32, (3, 3), input_shape=(img_dims, img_dims, 4), activation='relu'))
 model.add(Layr.MaxPooling2D(pool_size=(2, 2)))
 model.add(Layr.Conv2D(32, (3, 3), activation='relu'))
 model.add(Layr.MaxPooling2D(pool_size=(2, 2)))
@@ -70,10 +74,10 @@ model.compile(loss=loss, optimizer=optimizer, metrics=['accuracy'])
 
 # Fit model to data
 h = model.fit(training_set,
-              steps_per_epoch=729 // batch_size,  # number of training set images, 729
-              epochs=5,
+              steps_per_epoch=1081 // batch_size,  # number of training set images, 729
+              epochs=epochs,
               validation_data=test_set,
-              validation_steps=109 // batch_size)  # number of test set images, 229
+              validation_steps=470 // batch_size)  # number of test set images, 229
 
 model.save('models.tmp/model_multiclass10.h5')  # save model
 
@@ -110,3 +114,14 @@ plt.show()
 # plt.plot(h.history['accuracy'], 'r')
 # plt.plot(h.history['val_accuracy'], 'black')
 # plt.show()
+
+# train_datagen = ImageDataGenerator(
+#     rotation_range=10,
+#     width_shift_range=0.1,
+#     height_shift_range=0.1,
+#     rescale=1. / 255,
+#     shear_range=0.1,
+#     zoom_range=0.2,
+#     horizontal_flip=False,
+#     fill_mode='nearest')
+
