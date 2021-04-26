@@ -125,8 +125,8 @@ class_labels = list(test_set.class_indices.keys())
 # y_pred = np.argmax(model.predict(test_set), axis=-1)
 
 # print report
-print(true_classes)
-print(predicted_classes)
+# print(true_classes)
+# print(predicted_classes)
 print(classification_report(true_classes, predicted_classes, target_names=class_labels))
 
 # plt.figure(1)
