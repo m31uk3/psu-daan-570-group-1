@@ -39,13 +39,13 @@ classes = 5
 training_set = train_data.flow_from_directory(root_path + 'TRAIN', # 5 classes
                                               target_size=(img_dims, img_dims),
                                               batch_size=batch_size,
-                                              color_mode='rgba',  # (img_dims, img_dims, 4)
+                                              #color_mode='rgba',  # (img_dims, img_dims, 4)
                                               class_mode='categorical')
 
 test_set = test_data.flow_from_directory(root_path + 'TEST', # 5 classes
                                          target_size=(img_dims, img_dims),
                                          batch_size=batch_size,
-                                         color_mode='rgba',  # (img_dims, img_dims, 4)
+                                         #color_mode='rgba',  # (img_dims, img_dims, 4)
                                          class_mode='categorical')
 
 #classes = 10
@@ -68,7 +68,7 @@ for _ in range(3):
 
 # CNN model 
 model = Modl.Sequential()
-model.add(Layr.Conv2D(32, (3, 3), input_shape=(img_dims, img_dims, 4), activation='relu'))
+model.add(Layr.Conv2D(32, (3, 3), input_shape=(img_dims, img_dims, 3), activation='relu'))
 model.add(Layr.MaxPooling2D(pool_size=(2, 2)))
 model.add(Layr.Conv2D(32, (3, 3), activation='relu'))
 model.add(Layr.MaxPooling2D(pool_size=(2, 2)))
@@ -142,8 +142,7 @@ class_labels = list(test_set.class_indices.keys())
 # print(true_classes)
 # print(y_pred)
 
-
-
+print(test_set.class_indices)
 confmat = confusion_matrix(true_classes, y_pred)
 df = pd.DataFrame(confmat)
 print(df)
