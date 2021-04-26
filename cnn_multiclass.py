@@ -16,7 +16,7 @@ import h5py
 # input vars
 epochs = 10
 batch_size = 32
-img_dims = 64
+img_dims = 256
 
 # Data Augmentation
 train_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
@@ -33,13 +33,13 @@ test_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
 # keep stuff clean
 # find . -type f -name ".*" -exec rm -f {} \;
 classes = 5
-training_set = train_data.flow_from_directory('images/Project/DATASET/TRAIN', # 5 classes
+training_set = train_data.flow_from_directory('images\DATASET\TRAIN', # 5 classes
                                               target_size=(img_dims, img_dims),
                                               batch_size=batch_size,
                                               color_mode='rgba',  # (img_dims, img_dims, 4)
                                               class_mode='categorical')
 
-test_set = test_data.flow_from_directory('images/Project/DATASET/TEST', # 5 classes
+test_set = test_data.flow_from_directory('images\DATASET\TEST', # 5 classes
                                          target_size=(img_dims, img_dims),
                                          batch_size=batch_size,
                                          color_mode='rgba',  # (img_dims, img_dims, 4)
@@ -107,6 +107,27 @@ plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend()
 plt.show()
+
+
+from sklearn.metrics import confusion_matrix, classification_report
+
+test_steps_per_epoch = np.math.ceil(test_set.samples / test_set.batch_size)
+predictions = model.predict_generator(test_set, steps=test_steps_per_epoch)
+# Get most likely class
+predicted_classes = np.argmax(predictions, axis=1)
+
+# Get ground-truth classes and class-labels
+true_classes = test_set.classes
+class_labels = list(test_set.class_indices.keys()) 
+
+# predict the probability distribution of the data
+# predictions=model.predict_generator(test_batches, steps=28, verbose=1)
+# y_pred = np.argmax(model.predict(test_set), axis=-1)
+
+# print report
+print(true_classes)
+print(predicted_classes)
+print(classification_report(true_classes, predicted_classes, target_names=class_labels))
 
 # plt.figure(1)
 # plt.plot(h.history['loss'], 'g')
