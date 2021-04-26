@@ -1,4 +1,5 @@
 from datetime import datetime
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -14,13 +15,11 @@ from IPython.display import display
 
 import h5py
 
-
-
-
 # input vars
-epochs = 15
+epochs = 2
 batch_size = 32
-img_dims = 256
+img_dims = 64
+root_path = os.path.join('images', 'DATASET') + os.sep # path is now OS agnostic
 
 # Data Augmentation
 train_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
@@ -37,28 +36,35 @@ test_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
 # keep stuff clean
 # find . -type f -name ".*" -exec rm -f {} \;
 classes = 5
-training_set = train_data.flow_from_directory('images\DATASET\TRAIN', # 5 classes
+training_set = train_data.flow_from_directory(root_path + 'TRAIN', # 5 classes
                                               target_size=(img_dims, img_dims),
                                               batch_size=batch_size,
                                               color_mode='rgba',  # (img_dims, img_dims, 4)
                                               class_mode='categorical')
 
-test_set = test_data.flow_from_directory('images\DATASET\TEST', # 5 classes
+test_set = test_data.flow_from_directory(root_path + 'TEST', # 5 classes
                                          target_size=(img_dims, img_dims),
                                          batch_size=batch_size,
                                          color_mode='rgba',  # (img_dims, img_dims, 4)
                                          class_mode='categorical')
 
 #classes = 10
-# training_set = train_data.flow_from_directory('images/training_set', # 10 classes
+# training_set = train_data.flow_from_directory(root_path + 'images/training_set', # 10 classes
 #                                                  target_size=(img_dims, img_dims),
 #                                                  batch_size=batch_size,
 #                                                  class_mode='categorical')
 
-# test_set = test_data.flow_from_directory('images/test_set', # 10 classes
+# test_set = test_data.flow_from_directory(root_path + 'images/test_set', # 10 classes
 #                                             target_size=(img_dims, img_dims),
 #                                             batch_size=batch_size,
 #                                             class_mode='categorical')
+
+
+for _ in range(3):
+    img, label = training_set.next()
+    print(img.shape)   #  (1,256,256,3)
+    plt.imshow(img[0])
+    plt.show()
 
 # CNN model 
 model = Modl.Sequential()
@@ -113,14 +119,14 @@ plt.legend()
 # plt.show()
 
 fnow = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
-ffile = fnow + '.results.plot.png'
+ffile = 'images' + os.sep + fnow + '.results.plot.png'
 print('Saving performance results ' + ffile)
 plt.savefig(ffile)
 
 from sklearn.metrics import confusion_matrix, classification_report
 
 test_steps_per_epoch = np.math.ceil(test_set.samples / test_set.batch_size)
-predictions = model.predict_generator(test_set, steps=test_steps_per_epoch)
+predictions = model.predict(test_set, steps=test_steps_per_epoch)
 # Get most likely class
 y_pred = np.argmax(predictions, axis=1)
 
