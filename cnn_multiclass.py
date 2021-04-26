@@ -1,3 +1,4 @@
+from datetime import datetime
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -13,8 +14,11 @@ from IPython.display import display
 
 import h5py
 
+
+
+
 # input vars
-epochs = 10
+epochs = 15
 batch_size = 32
 img_dims = 256
 
@@ -85,7 +89,7 @@ img_data = np.random.random(size=(32, 32, 3))
 img = PreP.image.array_to_img(img_data)
 plt.figure(0)
 plt.imshow(img, cmap=plt.cm.binary)
-plt.show()
+# plt.show()
 
 # key check
 print(h.history.keys())
@@ -106,15 +110,19 @@ plt.title('model loss')
 plt.ylabel('loss')
 plt.xlabel('epoch')
 plt.legend()
-plt.show()
+# plt.show()
 
+fnow = datetime.now().strftime("%Y_%m_%d_%H_%M_%S")
+ffile = fnow + '.results.plot.png'
+print('Saving performance results ' + ffile)
+plt.savefig(ffile)
 
 from sklearn.metrics import confusion_matrix, classification_report
 
 test_steps_per_epoch = np.math.ceil(test_set.samples / test_set.batch_size)
 predictions = model.predict_generator(test_set, steps=test_steps_per_epoch)
 # Get most likely class
-predicted_classes = np.argmax(predictions, axis=1)
+y_pred = np.argmax(predictions, axis=1)
 
 # Get ground-truth classes and class-labels
 true_classes = test_set.classes
@@ -126,8 +134,15 @@ class_labels = list(test_set.class_indices.keys())
 
 # print report
 # print(true_classes)
-# print(predicted_classes)
-print(classification_report(true_classes, predicted_classes, target_names=class_labels))
+# print(y_pred)
+
+
+
+confmat = confusion_matrix(true_classes, y_pred)
+df = pd.DataFrame(confmat)
+print(df)
+
+print(classification_report(true_classes, y_pred, target_names=class_labels))
 
 # plt.figure(1)
 # plt.plot(h.history['loss'], 'g')
