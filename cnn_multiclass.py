@@ -22,17 +22,24 @@ batch_size = 32
 img_dims = 128
 root_path = os.path.join('images', 'DATASET') + os.sep  # path is now OS agnostic
 
-# Data Augmentation
+
+# Functions
+def show_batch(image_batch, label_batch, class_indices, size=10):
+    intLabels = np.argmax(label_batch, axis=1)  # Convert OneHot To Int Values
+    textLabels = list(class_indices.keys())  # Convert Class Indices Keys to List
+
+    plt.figure(figsize=(20, 20))
+    for n in range(size):
+        plt.subplot(5, 5, n + 1)
+        plt.imshow(image_batch[n])
+        plt.title(textLabels[intLabels[n]])
+        # plt.colorbar(im)
+        plt.axis('off')
+
+
+# Data Structure, Define and Initalize ImageDataGenerators
 train_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
-
 test_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
-
-# train_2_data = PreP.image.ImageDataGenerator(rescale=1. / 255,
-#                                              shear_range=0.2,
-#                                              zoom_range=0.2,
-#                                              rotation_range=20,
-#                                              horizontal_flip=True)
-# test_2_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
 
 # keep stuff clean
 # find . -type f -name ".*" -exec rm -f {} \;
@@ -60,15 +67,11 @@ test_set = test_data.flow_from_directory(root_path + 'TEST',  # 5 classes
 #                                             batch_size=batch_size,
 #                                             class_mode='categorical')
 
+# Plot Collage of ImageDataGenerator Batch Samples
+image_batch, label_batch = next(training_set)
+show_batch(image_batch, label_batch, training_set.class_indices)
 
-for _ in range(3):
-    img, label = training_set.next()
-    print(img.shape)  # (1,256,256,3)
-    plt.imshow(img[0])
-    plt.show()
-
-
-# CNN model 
+# CNN model
 model = Modl.Sequential()
 model.add(Layr.Conv2D(64, (3, 3), input_shape=(img_dims, img_dims, 3), activation='relu'))
 model.add(Layr.MaxPooling2D((2, 2)))
@@ -95,12 +98,6 @@ h = model.fit(training_set,
               validation_steps=470 // batch_size)  # number of test set images, 229
 
 model.save('models.tmp/model_multiclass10.h5')  # save model
-
-img_data = np.random.random(size=(32, 32, 3))
-img = PreP.image.array_to_img(img_data)
-plt.figure(0)
-plt.imshow(img, cmap=plt.cm.binary)
-# plt.show()
 
 # key check
 print(h.history.keys())
@@ -157,28 +154,28 @@ print(classification_report(true_classes, y_pred, target_names=class_labels))
 import math
 
 # Find misclassified samples in the test set.
-sel = y_pred != true_classes
-n_mc = np.sum(sel)  # number misclassified
-
-x, y = next(test_set)
-X_mc = x[sel, :]
-y_mc = true_classes[sel]
-yp_mc = y_pred[sel]
-
-idx = np.argsort(y_mc)
-X_mc = X_mc[idx, :]
-y_mc = y_mc[idx]
-yp_mc = yp_mc[idx]
-
-rows = math.ceil(n_mc / 6)
-
-plt.figure(figsize=(12, 30))
-for i in range(0, n_mc):
-    plt.subplot(rows, 6, i + 1)
-    plt.imshow(X_mc[i], cmap=plt.cm.binary)
-    plt.text(-1, 10, s=str(int(y_mc[i])), fontsize=16, color='b')
-    plt.text(-1, 16, s=str(int(yp_mc[i])), fontsize=16, color='r')
-    plt.axis('off')
+# sel = y_pred != true_classes
+# n_mc = np.sum(sel)  # number misclassified
+#
+# x, y = next(test_set)
+# X_mc = x[sel, :]
+# y_mc = true_classes[sel]
+# yp_mc = y_pred[sel]
+#
+# idx = np.argsort(y_mc)
+# X_mc = X_mc[idx, :]
+# y_mc = y_mc[idx]
+# yp_mc = yp_mc[idx]
+#
+# rows = math.ceil(n_mc / 6)
+#
+# plt.figure(figsize=(12, 30))
+# for i in range(0, n_mc):
+#     plt.subplot(rows, 6, i + 1)
+#     plt.imshow(X_mc[i], cmap=plt.cm.binary)
+#     plt.text(-1, 10, s=str(int(y_mc[i])), fontsize=16, color='b')
+#     plt.text(-1, 16, s=str(int(yp_mc[i])), fontsize=16, color='r')
+#     plt.axis('off')
 
 # plt.figure(1)
 # plt.plot(h.history['loss'], 'g')
