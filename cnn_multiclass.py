@@ -9,6 +9,7 @@ import keras.losses as Loss
 import keras.layers as Layr
 import keras.preprocessing as PreP
 from PIL import ImageFile
+
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 from IPython.display import display
@@ -18,8 +19,8 @@ import h5py
 # input vars
 epochs = 2
 batch_size = 32
-img_dims = 64
-root_path = os.path.join('images', 'DATASET') + os.sep # path is now OS agnostic
+img_dims = 128
+root_path = os.path.join('images', 'DATASET') + os.sep  # path is now OS agnostic
 
 # Data Augmentation
 train_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
@@ -36,19 +37,19 @@ test_data = PreP.image.ImageDataGenerator(rescale=1. / 255)
 # keep stuff clean
 # find . -type f -name ".*" -exec rm -f {} \;
 classes = 5
-training_set = train_data.flow_from_directory(root_path + 'TRAIN', # 5 classes
+training_set = train_data.flow_from_directory(root_path + 'TRAIN',  # 5 classes
                                               target_size=(img_dims, img_dims),
                                               batch_size=batch_size,
-                                              #color_mode='rgba',  # (img_dims, img_dims, 4)
+                                              # color_mode='rgba',  # (img_dims, img_dims, 4)
                                               class_mode='categorical')
 
-test_set = test_data.flow_from_directory(root_path + 'TEST', # 5 classes
+test_set = test_data.flow_from_directory(root_path + 'TEST',  # 5 classes
                                          target_size=(img_dims, img_dims),
                                          batch_size=batch_size,
-                                         #color_mode='rgba',  # (img_dims, img_dims, 4)
+                                         # color_mode='rgba',  # (img_dims, img_dims, 4)
                                          class_mode='categorical')
 
-#classes = 10
+# classes = 10
 # training_set = train_data.flow_from_directory(root_path + 'images/training_set', # 10 classes
 #                                                  target_size=(img_dims, img_dims),
 #                                                  batch_size=batch_size,
@@ -62,19 +63,23 @@ test_set = test_data.flow_from_directory(root_path + 'TEST', # 5 classes
 
 for _ in range(3):
     img, label = training_set.next()
-    print(img.shape)   #  (1,256,256,3)
+    print(img.shape)  # (1,256,256,3)
     plt.imshow(img[0])
     plt.show()
 
+
 # CNN model 
 model = Modl.Sequential()
-model.add(Layr.Conv2D(32, (3, 3), input_shape=(img_dims, img_dims, 3), activation='relu'))
-model.add(Layr.MaxPooling2D(pool_size=(2, 2)))
-model.add(Layr.Conv2D(32, (3, 3), activation='relu'))
-model.add(Layr.MaxPooling2D(pool_size=(2, 2)))
+model.add(Layr.Conv2D(64, (3, 3), input_shape=(img_dims, img_dims, 3), activation='relu'))
+model.add(Layr.MaxPooling2D((2, 2)))
+model.add(Layr.Conv2D(128, (3, 3), activation='relu'))
+model.add(Layr.MaxPooling2D((2, 2)))
+model.add(Layr.Conv2D(256, (3, 3), activation='relu'))
+model.add(Layr.MaxPooling2D((2, 2)))
+model.add(Layr.Conv2D(512, (3, 3), activation='relu'))
+model.add(Layr.MaxPooling2D((2, 2)))
 model.add(Layr.Flatten())
 model.add(Layr.Dense(units=img_dims * 2, activation='relu'))
-
 # ensure this matches the number of folders in the ImageDataGenerator
 model.add(Layr.Dense(units=classes, activation='softmax'))  # number of classes
 
@@ -132,7 +137,7 @@ y_pred = np.argmax(predictions, axis=1)
 
 # Get ground-truth classes and class-labels
 true_classes = test_set.classes
-class_labels = list(test_set.class_indices.keys()) 
+class_labels = list(test_set.class_indices.keys())
 
 # predict the probability distribution of the data
 # predictions=model.predict_generator(test_batches, steps=28, verbose=1)
@@ -148,6 +153,32 @@ df = pd.DataFrame(confmat)
 print(df)
 
 print(classification_report(true_classes, y_pred, target_names=class_labels))
+
+import math
+
+# Find misclassified samples in the test set.
+sel = y_pred != true_classes
+n_mc = np.sum(sel)  # number misclassified
+
+x, y = next(test_set)
+X_mc = x[sel, :]
+y_mc = true_classes[sel]
+yp_mc = y_pred[sel]
+
+idx = np.argsort(y_mc)
+X_mc = X_mc[idx, :]
+y_mc = y_mc[idx]
+yp_mc = yp_mc[idx]
+
+rows = math.ceil(n_mc / 6)
+
+plt.figure(figsize=(12, 30))
+for i in range(0, n_mc):
+    plt.subplot(rows, 6, i + 1)
+    plt.imshow(X_mc[i], cmap=plt.cm.binary)
+    plt.text(-1, 10, s=str(int(y_mc[i])), fontsize=16, color='b')
+    plt.text(-1, 16, s=str(int(yp_mc[i])), fontsize=16, color='r')
+    plt.axis('off')
 
 # plt.figure(1)
 # plt.plot(h.history['loss'], 'g')
@@ -165,4 +196,3 @@ print(classification_report(true_classes, y_pred, target_names=class_labels))
 #     zoom_range=0.2,
 #     horizontal_flip=False,
 #     fill_mode='nearest')
-
