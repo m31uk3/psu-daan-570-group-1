@@ -14,12 +14,15 @@ from keras import optimizers
 import matplotlib.pyplot as plt
 from keras.preprocessing.image import ImageDataGenerator
 from PIL import ImageFile
+from sklearn.metrics import classification_report, confusion_matrix
+import seaborn as sns
+
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
 # Working directory = C:\\Users\\gvmds
 
-base_dir = 'Yoga_Dataset/DATASET/'
+base_dir = 'C:\\Users\\gvmds\\Desktop\\Yoga_Dataset\\DATASET\\'
 #os.mkdir(base_dir)
 
 train_dir = os.path.join(base_dir, 'TRAIN')
@@ -31,7 +34,7 @@ validation_dir = os.path.join(base_dir, 'VALIDATION')
 test_dir = os.path.join(base_dir, 'TEST')
 #os.mkdir(test_dir)
 
-# make test, train and valiadation directories for each animal
+# make test, train and valiadation directories for pose
 
 train_downdog_dir = os.path.join(train_dir, 'downdog')
 train_goddess_dir = os.path.join(train_dir, 'goddess')
@@ -53,39 +56,7 @@ test_plank_dir = os.path.join(test_dir, 'plank')
 test_tree_dir = os.path.join(test_dir, 'tree')
 test_warrior2_dir = os.path.join(test_dir, 'warrior2')
 
-#os.mkdir(train_cats_dir)
 
-# Directory with our training dog pictures
-#train_dogs_dir = os.path.join(train_dir, 'dogs')
-#os.mkdir(train_dogs_dir)
-
-# Directory with our training panda pictures
-#train_pandas_dir = os.path.join(train_dir, 'panda')
-#os.mkdir(train_pandas_dir)
-
-# Directory with our validation cat pictures
-#validation_cats_dir = os.path.join(validation_dir, 'cats')
-#os.mkdir(validation_cats_dir)
-
-# Directory with our validation dog pictures
-#validation_dogs_dir = os.path.join(validation_dir, 'dogs')
-#os.mkdir(validation_dogs_dir)
-
-# Directory with our validation pandas pictures
-#validation_pandas_dir = os.path.join(validation_dir, 'panda')
-#os.mkdir(validation_pandas_dir)
-
-# Directory with our validation cat pictures
-#test_cats_dir = os.path.join(test_dir, 'cats')
-#os.mkdir(test_cats_dir)
-
-# Directory with our validation dog pictures
-#test_dogs_dir = os.path.join(test_dir, 'dogs')
-#os.mkdir(test_dogs_dir)
-
-# Directory with our validation pandas pictures
-#test_pandas_dir = os.path.join(test_dir, 'panda')
-#os.mkdir(test_pandas_dir)
 
 
     
@@ -162,11 +133,12 @@ validation_generator = test_datagen.flow_from_directory(
         class_mode='categorical')
 
 
+
 # Fit the model 
 history = model.fit(
       train_generator,
       steps_per_epoch=30,
-      epochs=2,
+      epochs=10,
       validation_data= validation_generator,
       validation_steps=10)
 
@@ -204,6 +176,10 @@ for data_batch, labels_batch in train_generator:
     print('data batch shape:', data_batch.shape)
     print('labels batch shape:', labels_batch.shape)
     break
+
+
+
+
 #Save the model
 model.save('yoga_pose_classifier.model')
 
@@ -248,6 +224,7 @@ for batch in datagen.flow(x, batch_size=1):
 
 plt.show()
 
+#Build the Network
 
 model2 = models.Sequential()
 
@@ -293,16 +270,23 @@ train_generator2 = train_datagen.flow_from_directory(
 
 #Validate with TEST dataset
 validation_generator2 = test_datagen.flow_from_directory(
-        validation_dir,
+        test_dir,
         target_size=(150,150),
         batch_size=20,
         class_mode='categorical')
+
+test_generator = ImageDataGenerator()
+test_data_generator = test_generator.flow_from_directory(
+    test_dir, # Put your path here
+     target_size=(150, 150),
+    batch_size=20,
+    shuffle=False)
 
 history = model2.fit_generator(
       train_generator,
       steps_per_epoch=10,
       epochs=30,
-      validation_data=validation_generator,
+      validation_data=validation_generator2,
       validation_steps=10)
 
 acc = history.history['acc']
@@ -330,7 +314,7 @@ plt.show()
 #Save the model
 model2.save('_Data_augmented_yoga_pose_classifier.model')
 
-
+#Stream Train Data
 train_datagen_for_plot = ImageDataGenerator(
     #rescale=1./255,
     #rotation_range=40,
@@ -339,6 +323,7 @@ train_datagen_for_plot = ImageDataGenerator(
     shear_range=0.2,
     zoom_range=0.2,
     horizontal_flip=True)
+
 
 train_generator_for_plot = train_datagen.flow_from_directory(
         # This is the target directory
@@ -368,6 +353,31 @@ def plots(ims, figsize=(12,6), rows=1, interp=False, titles=None):
 imgs, labels = next(train_generator_for_plot)
 plots(imgs, titles=labels )
 
+'''y_pred = model.predict(validation_generator)
+y_pred = np.argmax(y_pred, axis=1)
+print(classification_report(validation_generator.classes, y_pred))
+
+cf_matrix = confusion_matrix(validation_generator.classes, y_pred)
+Labels = ['downdog', 'tree', 'warrior2', 'goddess', 'plank']
+plt.figure(figsize=(20, 8))
+heatmap = sns.heatmap(cf_matrix, xticklabels=Labels, yticklabels=Labels, annot=True, fmt='d', color='blue')
+plt.xlabel('Predicted Class')
+plt.ylabel('True Class')
+plt.title('Confusion Matrix')
+plt.show()'''
+
+# Generate the Classification Report for each class
+test_steps_per_epoch = np.math.ceil(test_data_generator.samples / test_data_generator.batch_size)
+
+predictions = model2.predict_generator(test_data_generator, steps=test_steps_per_epoch)
+# Get most likely class
+predicted_classes = np.argmax(predictions, axis=1)
+
+true_classes = test_data_generator.classes
+class_labels = list(test_data_generator.class_indices.keys()) 
+
+report = classification_report(true_classes, predicted_classes, target_names=class_labels)
+print(report) 
 
 
 

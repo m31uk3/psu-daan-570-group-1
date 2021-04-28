@@ -19,9 +19,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 # Working directory = C:\\Users\\gvmds
 
-#base_dir = 'C:\\Users\\gvmds\\Desktop\\Yoga_Dataset\\DATASET\\'
-base_dir = 'images/Project/DATASET/'
-
+base_dir = 'C:\\Users\\gvmds\\Desktop\\Yoga_Dataset\\DATASET\\'
 #os.mkdir(base_dir)
 
 train_dir = os.path.join(base_dir, 'TRAIN')
@@ -235,7 +233,7 @@ validation_generator = test_datagen.flow_from_directory(
 history = model.fit(
       train_generator,
       steps_per_epoch=30,
-      epochs=2,
+      epochs=10,
       validation_data= validation_generator,
       validation_steps=10)
 
