@@ -19,7 +19,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 # Working directory = C:\\Users\\gvmds
 
-base_dir = 'images/Project/DATASET/'
+base_dir = 'Yoga_Dataset/DATASET/'
 #os.mkdir(base_dir)
 
 train_dir = os.path.join(base_dir, 'TRAIN')
