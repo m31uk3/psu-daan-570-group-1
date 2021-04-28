@@ -17,7 +17,7 @@ ImageFile.LOAD_TRUNCATED_IMAGES = True
 # input vars
 epochs = 2
 batch_size = 32
-img_dims = 256
+img_dims = 128
 root_path = os.sep + os.path.join('Users', 'lujackso', 'Downloads', 'DAAN-570-302-scratch', 'psu-daan-570-group-1',
                                   'images', 'DATASET') + os.sep  # path is now OS agnostic
 
@@ -27,13 +27,14 @@ def show_batch(image_batch, label_batch, class_indices, size=10):
     intLabels = np.argmax(label_batch, axis=1)  # Convert OneHot To Int Values
     textLabels = list(class_indices.keys())  # Convert Class Indices Keys to List
 
-    plt.figure(figsize=(20, 20))
+    plt.figure("Collage", tight_layout=True, figsize=(10, 5))
     for n in range(size):
-        plt.subplot(5, 5, n + 1)
+        plt.subplot(2, 5, n + 1)
         plt.imshow(image_batch[n])
         plt.title(textLabels[intLabels[n]])
         # plt.colorbar(im)
         plt.axis('off')
+    plt.show()
 
 
 # Data Structure, Define and Initalize ImageDataGenerators
@@ -82,7 +83,7 @@ intLabels = np.argmax(label_batch, axis=1)  # Convert OneHot To Int Values
 textLabels = list(training_set.class_indices.keys())
 cntClasses = pd.Series(intLabels).value_counts()
 
-i = 10
+i = 1
 print("Summarize Random Sample by Count(#) of each class.")
 for c in range(len(textLabels)):
     print(c, ":", textLabels[c], cntClasses[c])
@@ -92,6 +93,7 @@ print("Visualize Random Sample from ImageDataGenerator -> DirectoryIterator obje
 for n in range(i):
     # print(n, np.argmax(label_batch[n], axis=0))
     print(n, ":", textLabels[intLabels[n]], "-", intLabels[n], "-", label_batch[n])
+    plt.figure(n)
     plt.imshow(image_batch[n])
     plt.title(textLabels[intLabels[n]])
     plt.axis('on')
